@@ -1,4 +1,4 @@
-# Damaged Building Prediction with Nueral Networks
+# Damaged Building Prediction with Neural Networks
 
 This repository works with Neural Network Architectures for machine learning models to classify sattelite images of Texas buildings following hurricane Harvey. The models split the data into a binary classification of 'damaged' and 'no damage' buildings with the assistance of Tensorflow neural networks. In this repository we explored three different NN architectures: Artifical Neural Network (ANN), and Two different LeNet5 CNN models. We then deployed the best performing model with a inference server hosted on a flask server, that can be easily deployed with the assistance of a docker image. Flask API calls & examples are shown further in this README.
 
