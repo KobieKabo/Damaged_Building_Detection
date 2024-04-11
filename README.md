@@ -24,8 +24,8 @@ The  Docker image for the inference server is ``.
 
 Run:
 ```
-$ docker pull ecolley3/ml-damage-api
-$ docker run -p 5000:5000 ecolley3/ml-damage-api 
+$ docker pull KobieKabo/ml-hurricane-api
+$ docker run -p 5000:5000 KobieKabo/ml-hurricane-api 
 ```
 
 ### Making Requests to the Inference Server
@@ -45,14 +45,23 @@ To retrieve information about the currently loaded model, you can make a GET req
 This request will return JSON data containing details such as the model's version, name, description, and parameter counts.
 
 #### Classifying an Image
-To classify an image using the inference server, send a POST request to the /proj_models/Mod_LeNet5/predict endpoint with the image you want to classify.
+To classify an image using the inference server, send a POST request to the /proj_models/Mod_LeNet5/predict endpoint with the image you want to classify. As it 
+stands we were unable to get the curl command to work in the vm, likely because the jupyter notebook is already running in docker. Despite this issue the predict function still works, it just must be done within the inference_server in jupyter notebook. Below is the code with an example file path to do so.
 
 ```
+import requests
+iterator = iter(test_rescale_ds)
+import numpy as np
+from PIL import Image
+l = np.array(Image.open('../data/project3/data_all_modified/damage/-93.528502_30.987438.jpeg')).tolist()
 
+# make the POST request passing the single test case as the `image` field:
+rsp = requests.post("http://172.17.0.1:5000/proj_models/Mod_LeNet5/v1", json={"image":l})
+rsp.json()
 ```
-for example:
+This code block will be able to request a single test image and after running `rsp.json()` we can see the results. For example:
 ```
-
+{'result': [[0.9861195087432861, 0.021355213597416878]]}
 ```
 
 ### Architectures:
