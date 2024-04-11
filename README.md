@@ -16,7 +16,7 @@ This API serves as an interface for classifying images using pre-trained TensorF
 | Endpoint            | Method | Description                                                                                         |
 |---------------------|--------|-----------------------------------------------------------------------------------------------------|
 | /proj_models/Mod_LeNet5/v1 | GET | Returns the information on the model regarding total parameters, version, model name & what the model does. |
-| /proj_models/Mod_LeNet5/v1 | POST | Post an image to the model & return information regrarding the prediciton of the model on the image. |
+| /proj_models/Mod_LeNet5/predict | POST | Post an image to the model & return information regrarding the prediciton of the model on the image. |
 
 ### Running with Docker
 
