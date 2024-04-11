@@ -24,8 +24,8 @@ The  Docker image for the inference server is ``.
 
 Run:
 ```
-$ docker pull {insert image}
-$ docker run -p 5000:5000 {insert image}  
+$ docker pull ecolley3/ml-damage-api
+$ docker run -p 5000:5000 ecolley3/ml-damage-api 
 ```
 
 ### Making Requests to the Inference Server
@@ -36,13 +36,14 @@ To retrieve information about the currently loaded model, you can make a GET req
 ```
 
 {
-  
+  curl localhost:5000/proj_models/ann/v1
 }
 ```
 This request will return JSON data containing details such as the model's version, name, description, and parameter counts.
 
 #### Classifying an Image
-To classify an image using the inference server, send a POST request to the /model/predict endpoint with the image you want to classify. Here's an example using curl:
+To classify an image using the inference server, send a POST request to the /model/predict endpoint with the image you want to classify. Since the inference server is already running in Docker,
+we must use the inference server file to run these commands. They are:
 
 ```
 
