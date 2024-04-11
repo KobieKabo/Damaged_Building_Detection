@@ -15,8 +15,8 @@ This API serves as an interface for classifying images using pre-trained TensorF
 
 | Endpoint            | Method | Description                                                                                         |
 |---------------------|--------|-----------------------------------------------------------------------------------------------------|
-|       |     |  |
-|     |     | |
+| /proj_models/Mod_LeNet5/v1 | GET | Returns the information on the model regarding total parameters, version, model name & what the model does. |
+| /proj_models/Mod_LeNet5/v1 | POST | Post an image to the model & return information regrarding the prediciton of the model on the image. |
 
 ### Running with Docker
 
@@ -34,9 +34,12 @@ $ docker run -p 5000:5000 ecolley3/ml-damage-api
 To retrieve information about the currently loaded model, you can make a GET request to the /model/info endpoint:
 
 ```
-
+  curl localhost:5000/proj_models/Mod_LeNet5/v1
 {
-  curl localhost:5000/proj_models/ann/v1
+  "description": "Classify images containing satellite data of Texas after a hurricane",
+  "name": "Mod_LeNet5",
+  "number_of_parameters": 505546,
+  "version": "v1"
 }
 ```
 This request will return JSON data containing details such as the model's version, name, description, and parameter counts.
