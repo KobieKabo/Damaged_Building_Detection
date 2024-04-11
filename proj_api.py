@@ -5,7 +5,7 @@ import os
 
 app = Flask(__name__)
 
-model = tf.keras.models.load_model('proj_models/Mod_LeNet5/v1')
+model = tf.keras.models.load_model('proj_models/Mod_LeNet5.keras')
 
 
 @app.route('/proj_models/Mod_LeNet5/v1', methods=['GET'])
@@ -24,8 +24,10 @@ def preprocess_input(im):
    """
    # convert to a numpy array
    d = np.array(im)
+   d = d / 255.0
+   d = np.expand_dims(d, axis = 0)
    # then add an extra dimension
-   return d.reshape(1, 128, 128,3)
+   return d
 
 
     
