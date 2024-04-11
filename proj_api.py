@@ -29,9 +29,8 @@ def preprocess_input(im):
    # then add an extra dimension
    return d
 
-
     
-@app.route('/proj_models/Mod_LeNet5/v1', methods=['POST'])
+@app.route('/proj_models/Mod_LeNet5/predict', methods=['POST'])
 def classify_building_image():
    im = request.json.get('image')
    if not im:
@@ -41,7 +40,7 @@ def classify_building_image():
    except Exception as e:
       return {"error": f"Could not process the `image` field; details: {e}"}, 404
    return { "result": model.predict(data).tolist()}
-    
+
 # start the development server
 if __name__ == '__main__':
    app.run(debug=True, host='0.0.0.0')
