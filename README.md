@@ -31,7 +31,7 @@ $ docker run -p 5000:5000 ecolley3/ml-damage-api
 ### Making Requests to the Inference Server
 
 #### Requesting Model Information
-To retrieve information about the currently loaded model, you can make a GET request to the /model/info endpoint:
+To retrieve information about the currently loaded model, you can make a GET request to the /proj_models/Mod_LeNet5/v1 endpoint:
 
 ```
   curl localhost:5000/proj_models/Mod_LeNet5/v1
@@ -45,8 +45,7 @@ To retrieve information about the currently loaded model, you can make a GET req
 This request will return JSON data containing details such as the model's version, name, description, and parameter counts.
 
 #### Classifying an Image
-To classify an image using the inference server, send a POST request to the /model/predict endpoint with the image you want to classify. Since the inference server is already running in Docker,
-we must use the inference server file to run these commands. They are:
+To classify an image using the inference server, send a POST request to the /proj_models/Mod_LeNet5/predict endpoint with the image you want to classify.
 
 ```
 
